@@ -10,10 +10,12 @@
   "license": "ISC",
   "main": "lib/index.js",
   "directories": {
-    "lib": "lib"
+    "lib": "lib",
+    "scripts": "scripts"
   },
   "files": [
-    "lib"
+    "lib",
+    "scripts"
   ],
   "publishConfig": {
     "access": "public"

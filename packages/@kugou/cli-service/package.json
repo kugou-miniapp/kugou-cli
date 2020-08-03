@@ -1,6 +1,6 @@
 {
   "name": "@kugou-miniapp/cli-service",
-  "version": "0.1.0",
+  "version": "0.0.10",
   "description": "webpack service for kugou-miniapp",
   "author": "梁嘉辉 <chrisliang@kugou.net>",
   "homepage": "https://github.com/kugou-miniapp/kugou-cli#readme",

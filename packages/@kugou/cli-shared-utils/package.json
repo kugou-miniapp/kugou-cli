@@ -1,6 +1,6 @@
 {
   "name": "@kugou-miniapp/cli-shared-utils",
-  "version": "0.0.11",
+  "version": "0.0.12",
   "description": "shared utilities for @kugou-miniapp packages",
   "author": "梁嘉辉 <chrisliang@kugou.net>",
   "homepage": "https://github.com/kugou-miniapp/kugou-cli#readme",

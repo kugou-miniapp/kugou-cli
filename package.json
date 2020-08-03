@@ -1,0 +1,9 @@
+{
+  "name": "root",
+  "packages": [
+    "packages/@kugou/*"
+  ],
+  "devDependencies": {
+    "lerna": "^3.22.1"
+  }
+}

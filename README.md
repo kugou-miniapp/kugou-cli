@@ -1,2 +1,2 @@
 # kugou-cli
-kugou cli for kugou-miniapp projects
+酷狗小程序脚手架

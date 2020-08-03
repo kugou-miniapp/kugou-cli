@@ -1,0 +1,45 @@
+{
+  "name": "@kugou-miniapp/cli",
+  "version": "0.1.0",
+  "description": "cli for kugou-miniapp project",
+  "keywords": [
+    "cli"
+  ],
+  "author": "梁嘉辉 <chrisliang@kugou.net>",
+  "homepage": "https://github.com/kugou-miniapp/kugou-cli#readme",
+  "license": "ISC",
+  "main": "lib/index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "files": [
+    "lib"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kugou-miniapp/kugou-cli.git"
+  },
+  "bin": {
+    "kugou": "lib/index.js"
+  },
+  "scripts": {
+    "install": "node scripts/install.js"
+  },
+  "dependencies": {
+    "axios": "^0.19.2",
+    "getmac": "^5.13.0",
+    "globby": "^11.0.1",
+    "inquirer": "^7.2.0",
+    "lodash": "^4.17.15",
+    "mem-fs": "^1.2.0",
+    "mem-fs-editor": "^7.0.1",
+    "qrcode": "^1.4.4",
+    "yargs": "^15.3.1"
+  },
+  "bugs": {
+    "url": "https://github.com/kugou-miniapp/kugou-cli/issues"
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "name": "@kugou-miniapp/cli-service",
+  "version": "0.1.0",
+  "description": "webpack service for kugou-miniapp",
+  "author": "梁嘉辉 <chrisliang@kugou.net>",
+  "homepage": "https://github.com/kugou-miniapp/kugou-cli#readme",
+  "license": "ISC",
+  "main": "lib/index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "files": [
+    "lib"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kugou-miniapp/kugou-cli.git"
+  },
+  "dependencies": {
+    "archiver": "^4.0.1"
+  },
+  "bugs": {
+    "url": "https://github.com/kugou-miniapp/kugou-cli/issues"
+  }
+}

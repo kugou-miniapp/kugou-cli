@@ -1,0 +1,40 @@
+@mixin font-dpr($px) {
+    font-size: $px / 2;
+    [data-dpr="2"] & {
+      font-size: $px;
+    }
+    [data-dpr="3"] & {
+      font-size: $px / 2 * 3;
+    }
+  }
+  
+  @mixin border-dpr($px, $color, $type: solid, $dir: '') {
+    @if $dir == '' {
+      border: $px / 2 $type $color;
+      [data-dpr="2"] & {
+        border: $px $type $color;
+      }
+      [data-dpr="3"] & {
+        border: ($px / 2 * 3) $type $color;
+      }
+    } @else {
+      border-#{$dir}:  $px / 2 $type $color;
+      [data-dpr="2"] & {
+        border-#{$dir}:  $px $type $color;
+      }
+      [data-dpr="3"] & {
+        border-#{$dir}:  ($px / 2 * 3) $type $color;
+      }
+    }
+  }
+  
+  @mixin rect($px) {
+    width: $px;
+    height: $px;
+  }
+  
+  @mixin round($px) {
+    @include rect($px);
+    border-radius: 50%;
+  }
+  

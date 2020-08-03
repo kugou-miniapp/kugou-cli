@@ -1,0 +1,45 @@
+{
+  "name": "@kugou-miniapp/cli-shared-utils",
+  "version": "0.1.0",
+  "description": "shared utilities for @kugou-miniapp packages",
+  "author": "梁嘉辉 <chrisliang@kugou.net>",
+  "homepage": "https://github.com/kugou-miniapp/kugou-cli#readme",
+  "license": "ISC",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "files": [
+    "lib",
+    "index.js"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kugou-miniapp/kugou-cli.git"
+  },
+  "dependencies": {
+    "address": "^1.1.2",
+    "axios": "^0.19.2",
+    "chalk": "^4.1.0",
+    "command-exists": "^1.2.9",
+    "default-gateway": "^6.0.1",
+    "execa": "^4.0.3",
+    "launch-editor": "^2.2.1",
+    "lru-cache": "^6.0.0",
+    "md5": "^2.2.1",
+    "node-ipc": "^9.1.1",
+    "open": "^7.0.4",
+    "ora": "^4.0.4",
+    "qrcode": "^1.4.4",
+    "read-pkg": "^5.2.0",
+    "request": "^2.88.2",
+    "semver": "^7.3.2",
+    "strip-ansi": "^6.0.0"
+  },
+  "bugs": {
+    "url": "https://github.com/kugou-miniapp/kugou-cli/issues"
+  }
+}

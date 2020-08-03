@@ -1,9 +1,9 @@
-const { Tracker } = require('@kugou-miniapp/cli-shared-utils')
-const getMac = require('getmac').default
+// const { Tracker } = require('@kugou-miniapp/cli-shared-utils')
+// const getMac = require('getmac').default
 
-const mid = getMac()
+// const mid = getMac()
 
-const tracker = new Tracker()
+// const tracker = new Tracker()
 
 module.exports = function(data) {
   // tracker.track({

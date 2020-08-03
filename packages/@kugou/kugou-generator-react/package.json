@@ -3,7 +3,7 @@
   "version": "0.0.19",
   "description": "kugou-miniapp generator for react",
   "author": "梁嘉辉 <chrisliang@kugou.net>",
-  "homepage": "https://github.com/kugou-miniapp/kugou-cli#readme",
+  "homepage": ".",
   "license": "ISC",
   "publishConfig": {
     "access": "public"

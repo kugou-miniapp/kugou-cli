@@ -73,7 +73,7 @@ class Tracker {
       return pre + val + params[val]
     }, '')
 
-    const encodeData = url(JSON.stringify(data))
+    const encodeData = encodeURIComponent(JSON.stringify(data))
 
     str += this.config.appkey + encodeData
 

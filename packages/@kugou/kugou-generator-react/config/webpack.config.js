@@ -22,8 +22,7 @@ const getClientEnvironment = require('./env');
 const ModuleNotFoundPlugin = require('react-dev-utils/ModuleNotFoundPlugin');
 const ForkTsCheckerWebpackPlugin = require('react-dev-utils/ForkTsCheckerWebpackPlugin');
 const typescriptFormatter = require('react-dev-utils/typescriptFormatter');
-const { MiniAppZipWebpackPlugin } = require('@kugou/cli-service')
-const { getEntries } = require('@kugou/cli-service')
+const { getEntries, MiniAppZipWebpackPlugin } = require('@kugou-miniapp/cli-service')
 const {
   prepareUrls
 } = require('react-dev-utils/WebpackDevServerUtils');

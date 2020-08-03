@@ -1,4 +1,4 @@
-const { execa } = require('@kugou/cli-shared-utils')
+const { execa } = require('@kugou-miniapp/cli-shared-utils')
 
 exports.executeCommand = function executeCommand(command, args, cwd) {
   return new Promise((resolve, reject) => {

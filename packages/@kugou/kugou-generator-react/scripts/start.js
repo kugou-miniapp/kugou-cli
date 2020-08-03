@@ -31,7 +31,7 @@ const openBrowser = require('react-dev-utils/openBrowser');
 const paths = require('../config/paths');
 const configFactory = require('../config/webpack.config');
 const createDevServerConfig = require('../config/webpackDevServer.config');
-const { generatePreviewQrcode } = require('@kugou/cli-shared-utils')
+const { generatePreviewQrcode } = require('@kugou-miniapp/cli-shared-utils')
 
 const useYarn = fs.existsSync(paths.yarnLockFile);
 const isInteractive = process.stdout.isTTY;

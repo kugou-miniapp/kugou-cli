@@ -1,7 +1,7 @@
 const path = require('path')
 const fs = require('fs')
 const QRcode = require('qrcode')
-const { exit, done, error, getScanUrl } = require('@kugou/cli-shared-utils')
+const { exit, done, error, getScanUrl } = require('@kugou-miniapp/cli-shared-utils')
 const { checkVersion } = require('../util/check')
 
 exports.command = 'preview <version>'

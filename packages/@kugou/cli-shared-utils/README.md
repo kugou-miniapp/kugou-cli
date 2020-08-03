@@ -1,1 +1,1 @@
-# `@kugou/cli-shared-utils`
+# `@kugou-miniapp/cli-shared-utils`

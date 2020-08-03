@@ -1,5 +1,5 @@
-const { MiniAppZipWebpackPlugin, getEntries } = require('@kugou/cli-service')
-const { prepareUrls } = require('@kugou/cli-shared-utils')
+const { MiniAppZipWebpackPlugin, getEntries } = require('@kugou-miniapp/cli-service')
+const { prepareUrls } = require('@kugou-miniapp/cli-shared-utils')
 
 module.exports = {
   chainWebpack: config => {

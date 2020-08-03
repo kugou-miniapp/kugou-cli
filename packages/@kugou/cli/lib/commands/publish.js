@@ -1,6 +1,6 @@
 const fs = require('fs')
 const path = require('path')
-const { info, done, exit, error, clearConsole, logWithSpinner, stopSpinner } = require('@kugou/cli-shared-utils')
+const { info, done, exit, error, clearConsole, logWithSpinner, stopSpinner } = require('@kugou-miniapp/cli-shared-utils')
 const PackageManager = require('../util/package-manager')
 const { uploadPackage } = require('../util/request')
 const { checkVersion } = require("../util/check")

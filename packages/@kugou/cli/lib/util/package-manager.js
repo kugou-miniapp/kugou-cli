@@ -4,7 +4,7 @@ const {
   hasProjectNpm,
 
   resolvePkg
-} = require('@kugou/cli-shared-utils')
+} = require('@kugou-miniapp/cli-shared-utils')
 const { executeCommand } = require('../util/execute-command')
 
 const PACKAGE_MANAGER_CONFIG = {

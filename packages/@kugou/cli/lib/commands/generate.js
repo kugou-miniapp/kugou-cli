@@ -1,4 +1,4 @@
-const { error, info, done, exit, clearConsole } = require('@kugou/cli-shared-utils')
+const { error, info, done, exit, clearConsole } = require('@kugou-miniapp/cli-shared-utils')
 const inquirer = require('inquirer')
 const path = require('path')
 

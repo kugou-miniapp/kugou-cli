@@ -1,4 +1,4 @@
-const { generatePreviewQrcode, prepareUrls } = require('@kugou/cli-shared-utils')
+const { generatePreviewQrcode, prepareUrls } = require('@kugou-miniapp/cli-shared-utils')
 
 module.exports = api => {
   const { serve } = api.service.commands

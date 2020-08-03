@@ -1,4 +1,4 @@
-const { Tracker } = require('@kugou/cli-shared-utils')
+const { Tracker } = require('@kugou-miniapp/cli-shared-utils')
 const getMac = require('getmac').default
 
 const mid = getMac()

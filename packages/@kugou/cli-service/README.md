@@ -1,1 +1,1 @@
-# `@kugou/cli-service`
+# `@kugou-miniapp/cli-service`

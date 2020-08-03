@@ -29,6 +29,7 @@
     "install": "node scripts/install.js"
   },
   "dependencies": {
+    "@kugou-miniapp/cli-shared-utils": "^0.0.12",
     "axios": "^0.19.2",
     "getmac": "^5.13.0",
     "globby": "^11.0.1",

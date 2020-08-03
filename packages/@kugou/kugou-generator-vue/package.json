@@ -1,6 +1,6 @@
 {
   "name": "@kugou-miniapp/kugou-generator-vue",
-  "version": "0.0.10",
+  "version": "0.0.11",
   "description": "kugou-miniapp generator for vue",
   "author": "梁嘉辉 <chrisliang@kugou.net>",
   "license": "ISC",

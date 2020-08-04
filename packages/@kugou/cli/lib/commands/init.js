@@ -118,7 +118,7 @@ exports.handler = async function (argv) {
   if (modules.length === 0) {
     info(`现在下载模板 (${chalk.yellow(generatorName)})...`)
     const pm = new PackageManager()
-    await pm.add([generatorName], { global: true })
+    await pm.add([generatorName, '--registry', 'https://registry.npm.taobao.org'], { global: true })
     clearConsole()
     done('下载模板成功')
   }
@@ -169,7 +169,7 @@ exports.handler = async function (argv) {
     // 6. 安装项目依赖
     info('现在安装项目依赖...')
     const pm = new PackageManager({ context: projectPath })
-    await pm.install()
+    await pm.install(['--registry', 'https://registry.npm.taobao.org'])
     clearConsole()
     done(`${chalk.green('项目初始化完成！')}`)
     done(`${chalk.green('开发者文档参考：http://open.kugou.com/docs/mini-app/#/README')}`)

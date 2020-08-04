@@ -46,6 +46,7 @@ exports.generatePreviewQrcode = async (url, message = '扫描下面二维码，�
 
   if (!appid) {
     info('请在app.json配置appid获得更好的开发体验！')
+    info('请在开放平台(http://open.kugou.com/) -> 控制台 -> 开发管理 -> 点击页面配置获取appid')
     return
   }
 

@@ -46,7 +46,7 @@ exports.handler = async function (argv) {
 
   if (!appid || !appkey) {
     error('app.json未配置appid或appkey！')
-    info('请登录开放平台->控制台->配置信息->立即配置页面中进行查看：http://open.kugou.com')
+    info('请登录开放平台->控制台->开发管理->立即配置页面中进行查看：http://open.kugou.com')
     exit()
   }
 

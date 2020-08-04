@@ -1,6 +1,6 @@
 {
   "name": "@kugou-miniapp/kugou-generator-vue",
-  "version": "0.0.23",
+  "version": "0.0.24",
   "description": "kugou-miniapp generator for vue",
   "author": "梁嘉辉 <chrisliang@kugou.net>",
   "license": "ISC",
@@ -21,8 +21,8 @@
     ]
   },
   "dependencies": {
-    "@kugou-miniapp/cli-service": "^0.0.23",
-    "@kugou-miniapp/cli-shared-utils": "^0.0.23",
+    "@kugou-miniapp/cli-service": "^0.0.24",
+    "@kugou-miniapp/cli-shared-utils": "^0.0.24",
     "core-js": "^3.6.5",
     "vue": "^2.6.11",
     "vue-router": "^3.2.0",

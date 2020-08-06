@@ -59,14 +59,15 @@ exports.handler = async function (argv) {
     }
   }
 
-  if (sdkVersion) {
-    // if (!checkVersion(sdkVersion)) {
-    //   error('jssdk版本格式错误！应符合x.y.z格式！')
-    //   exit()
-    // } else {
-      params.sdk_version_id = sdkVersion
-    // }
-  }
+  // if (sdkVersion) {
+  //   if (!checkVersion(sdkVersion)) {
+  //     error('jssdk版本格式错误！应符合x.y.z格式！')
+  //     exit()
+  //   } else {
+  //     params.sdk_version_id = sdkVersion
+  //   }
+  // }
+  params.sdk_version_id = 8 // 对应1.0.3先写死
 
   if (description.length < 10 || description.length > 32) {
     error('描述长度不合法，要求10-32个字符以内')

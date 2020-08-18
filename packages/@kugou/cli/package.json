@@ -1,6 +1,6 @@
 {
   "name": "@kugou-miniapp/cli",
-  "version": "0.0.27",
+  "version": "0.0.28",
   "description": "cli for kugou-miniapp project",
   "keywords": [
     "cli"
@@ -31,7 +31,7 @@
     "install": "node scripts/install.js"
   },
   "dependencies": {
-    "@kugou-miniapp/cli-shared-utils": "^0.0.27",
+    "@kugou-miniapp/cli-shared-utils": "^0.0.28",
     "axios": "^0.19.2",
     "getmac": "^5.13.0",
     "globby": "^11.0.1",

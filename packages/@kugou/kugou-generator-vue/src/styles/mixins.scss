@@ -7,7 +7,7 @@
       font-size: $px / 2 * 3;
     }
   }
-  
+
   @mixin border-dpr($px, $color, $type: solid, $dir: '') {
     @if $dir == '' {
       border: $px / 2 $type $color;
@@ -27,14 +27,21 @@
       }
     }
   }
-  
+
   @mixin rect($px) {
     width: $px;
     height: $px;
   }
-  
+
   @mixin round($px) {
     @include rect($px);
     border-radius: 50%;
   }
-  
+
+  @mixin button {
+    transition: opacity 0.2s;
+    &:active {
+      opacity: 0.6;
+    }
+  }
+

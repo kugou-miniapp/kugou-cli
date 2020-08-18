@@ -1,3 +1,53 @@
+<template>
+  <header className="navigation-bar" :style="styles">
+      <span className="navigation-bar__icon">
+        <i className="weui-icon-back-arrow-thin" @click="handleBack" />
+      </span>
+    <div>{{ title }}</div>
+  </header>
+</template>
+
+<script>
+export default {
+  props: {
+    title: String,
+    barClick: Function
+  },
+  data() {
+    return {
+      height: 0
+    }
+  },
+  computed: {
+    styles() {
+      return {
+        height: `${this.height}px`
+      }
+    }
+  },
+  methods: {
+    handleBack() {
+      if (this.backClick) {
+        this.backClick();
+      } else {
+        window.MiniApp && window.MiniApp.navigateBack({
+          delta: 1
+        });
+      }
+    }
+  },
+  created() {
+    window.MiniApp && window.MiniApp.getSystemInfo({
+      success: res => {
+        const height = Number(res.statusBarHeight || 0) * 2 + (res.brand === 'iphone' ? 24 : 20)
+        this.height = height
+      }
+    });
+  }
+}
+</script>
+
+<style lang="scss" scoped>
 .navigation-bar {
   position: fixed;
   z-index: 10000;
@@ -45,3 +95,4 @@
   mask-size: 100%;
   background-color: currentColor;
 }
+</style>

@@ -37,3 +37,10 @@
   @include rect($px);
   border-radius: 50%;
 }
+
+@mixin button {
+  transition: opacity 0.2s;
+  &:active {
+    opacity: 0.6;
+  }
+}

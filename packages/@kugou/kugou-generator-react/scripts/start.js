@@ -80,8 +80,6 @@ checkBrowsers(paths.appPath, isInteractive)
     const config = configFactory('development');
     const protocol = process.env.HTTPS === 'true' ? 'https' : 'http';
     const appName = require(paths.appPackageJson).name;
-    const useTypeScript = fs.existsSync(paths.appTsConfig);
-    const tscCompileOnError = process.env.TSC_COMPILE_ON_ERROR === 'true';
     const urls = prepareUrls(
       protocol,
       HOST,
@@ -101,14 +99,12 @@ checkBrowsers(paths.appPath, isInteractive)
       devSocket,
       urls,
       useYarn,
-      useTypeScript,
-      tscCompileOnError,
       webpack,
     });
 
     // hack 编译成功后展示预览二维码
     compiler.hooks.done.tap('done', () => {
-      const url = `${protocol}://${urls.lanUrlForConfig}:${port}/#/`
+      const url = `${protocol}://${urls.lanUrlForConfig}:${port}/index.html#/`
 
       generatePreviewQrcode(url)
     })

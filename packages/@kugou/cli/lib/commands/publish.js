@@ -67,7 +67,7 @@ exports.handler = async function (argv) {
   //     params.sdk_version_id = sdkVersion
   //   }
   // }
-  params.sdk_version_id = 8 // 对应1.0.3先写死
+  // params.sdk_version_id = 8 // 对应1.0.3先写死
 
   if (description.length < 10 || description.length > 32) {
     error('描述长度不合法，要求10-32个字符以内')

@@ -1,10 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./index.scss";
-import { useMiniApp } from "@/hooks/mini-app";
 
 export default function NavigationBar(props) {
   const { title, showback, backClick } = props;
-  const [statusBarHeight, setStatusBarHeight] = useState(0);
+  const [height, setHeight] = useState(0)
 
   const handleBack = () => {
     if (backClick) {
@@ -16,18 +15,17 @@ export default function NavigationBar(props) {
     }
   };
 
-  useMiniApp(({ detail: { MiniApp } }) =>{
-    MiniApp.getSystemInfo({
+  useEffect(() => {
+    window.MiniApp && window.MiniApp.getSystemInfo({
       success: res => {
-        setStatusBarHeight(res.statusBarHeight);
+        const height = Number(res.statusBarHeight || 0) * 2 + (res.brand === 'iphone' ? 24 : 20)
+        setHeight(height)
       }
     });
-  })
-
-  const top = Number(statusBarHeight || 0) + 5;
+  }, [])
 
   return (
-    <header className="navigation-bar" style={{ top }}>
+    <header className="navigation-bar" style={{ height }}>
       {showback && (
         <span className="navigation-bar__icon">
           <i className="weui-icon-back-arrow-thin" onClick={handleBack} />

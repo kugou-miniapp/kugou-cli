@@ -9,7 +9,7 @@ module.exports = api => {
       const url = new URL(res.url)
       const urls = prepareUrls(url.protocol, '0.0.0.0', url.port, '/#/')
 
-      const previewUrl = `${url.protocol}//${urls.lanUrlForConfig}:${url.port}/#/`
+      const previewUrl = `${url.protocol}//${urls.lanUrlForConfig}:${url.port}/index.html#/`
       generatePreviewQrcode(previewUrl)
     })
   }

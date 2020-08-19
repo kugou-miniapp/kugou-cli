@@ -108,7 +108,7 @@ checkBrowsers(paths.appPath, isInteractive)
 
     // hack 编译成功后展示预览二维码
     compiler.hooks.done.tap('done', () => {
-      const url = `${protocol}://${urls.lanUrlForConfig}:${port}/#/`
+      const url = `${protocol}://${urls.lanUrlForConfig}:${port}/index.html#/`
 
       generatePreviewQrcode(url)
     })

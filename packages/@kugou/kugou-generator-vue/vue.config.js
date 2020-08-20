@@ -39,6 +39,7 @@ module.exports = {
     }
   },
   pages: getEntries(),
+  publicPath: './',
   css: {
     loaderOptions: {
       sass: {

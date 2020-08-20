@@ -43,5 +43,3 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 
 ## 备注
 - 不需要用动态路由或动态加载功能，因为在小程序离线包下无意义
-- 状态管理用useContext和useReducer处理
-- 线下酷狗小程序开发环境会直接注入sdk，浏览器打开时不注入，通过hook useMiniApp使用MiniApp

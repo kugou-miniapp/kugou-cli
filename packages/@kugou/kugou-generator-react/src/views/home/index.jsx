@@ -1,6 +1,5 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import NavigationBar from '@/components/navigation-bar'
-import { StoreContext } from '@/store'
 import './index.scss'
 import logo from '@/assets/img/logo.png'
 

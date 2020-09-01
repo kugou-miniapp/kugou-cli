@@ -93,23 +93,3 @@ kugou --version
 模板项目需要发布到npm(参考yeoman)，初始化时会自动全局安装所选模板，相比每次git clone可以有效利用本地缓存
 
 模板项目命名规则：kugou-generator-*，支持任意scope前缀（如官方的两个模板@kugou-miniapp/kugou-generator-react、@kugou-miniapp/kugou-genenrator-vue）
-
-## 四、开发计划
-### 4.1 第一版
-
-- 同类产品调研 [√]
-- 命令行程序（create、version、help）[√]
-- 官方模板项目 [√]
-- 开放文档 [√]
-
-### 4.2 第二版
-- 预览二维码 [√]
-- 自动上传包体 [√]
-- 欢迎页完善 [√]
-- 接入vue、react开发者工具 [√]
-
-### 4.3 第三版
-- 支持第三方模板、模板更新检查
-- 模块插件化、管理
-- 可视化操作
-- 数据埋点 [√]

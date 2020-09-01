@@ -64,7 +64,6 @@ kugou publish [version]
 备注：
 
 - 发布前需要在```public/app.json```中填写appid和appkey参数
-- [appkey获取接口](http://doc.kugou.net/showdoc-master/web/#/11?page_id=5878)
 
 ### 2.4 预览小程序
 

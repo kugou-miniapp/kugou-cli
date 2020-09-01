@@ -118,7 +118,7 @@ exports.handler = async function (argv) {
     })
 
     stopSpinner()
-    done('离线包上传成功！')
+    done(`离线包上传成功，请到开放平台(http://open.kugou.com/${appid}/manage/version?path=program)提交审核！`)
 
     track({
       a: 22744,

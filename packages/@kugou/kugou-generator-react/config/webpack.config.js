@@ -142,7 +142,7 @@ module.exports = function(webpackEnv) {
         Object.assign(
           {},
           {
-            chunks: [`runtime-${name}`, name],
+            chunks: [name, 'vendor', 'common'],
             inject: true,
             filename: `${name}.html`,
             template: `public/${name}.html`
@@ -305,8 +305,23 @@ module.exports = function(webpackEnv) {
       // https://twitter.com/wSokra/status/969633336732905474
       // https://medium.com/webpack/webpack-4-code-splitting-chunk-graph-and-the-splitchunks-optimization-be739a861366
       splitChunks: {
-        chunks: 'all',
-        name: false
+        chunks: 'async',
+        cacheGroups: {
+          vendor: {
+            name: 'vendor',
+            chunks: 'initial',
+            priority: 10, // 优先级
+            reuseExistingChunk: false, // 允许复用已经存在的代码块
+            test: /node_modules\/(.*)\.js/
+          },
+          common: {
+            name: 'common',
+            chunks: 'initial',
+            minChunks: 2,
+            priority: 5,
+            reuseExistingChunk: true
+          }
+        }
       },
       // Keep the runtime chunk separated to enable long term caching
       // https://twitter.com/wSokra/status/969679223278505985

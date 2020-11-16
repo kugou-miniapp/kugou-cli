@@ -55,6 +55,6 @@ module.exports = {
     }
   },
   devServer: {
-    port: process.env.PORT || 8080
+    port: parseInt(process.env.PORT, 10) || 3000
   },
 }

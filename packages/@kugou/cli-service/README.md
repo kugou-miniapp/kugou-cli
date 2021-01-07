@@ -14,7 +14,7 @@ module.exports = {
           name: "index"
         }
       ], // 规则数组
-      exclude: /\.map$/ // 排序文件规则，必须为正则，默认去除sourcemap
+      exclude: /\.map$/ // 排序文件规则，为正则表达式，默认去除sourcemap
       t: 'dist', // 默认输出文件夹
       d: 'dist' // 默认文件地址
     })

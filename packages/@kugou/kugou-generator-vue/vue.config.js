@@ -28,12 +28,9 @@ module.exports = {
         {
           r: [
             {
-              name: "index",
-              content: "all"
+              name: "index"
             }
-          ],
-          t: 'dist',
-          d: 'dist'
+          ]
         }
       ])
     }

@@ -1,6 +1,5 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./index.scss";
-import { useMiniApp } from "@/hooks/mini-app";
 
 export default function NavigationBar(props) {
   const { title, showback, backClick } = props;
@@ -16,13 +15,13 @@ export default function NavigationBar(props) {
     }
   };
 
-  useMiniApp(({ detail: { MiniApp } }) =>{
-    MiniApp.getSystemInfo({
-      success: res => {
+  useEffect(() => {
+    window.MiniApp && window.MiniApp.getSystemInfo({
+      success(res) {
         setStatusBarHeight(res.statusBarHeight);
       }
     });
-  })
+  }, [])
 
   const top = Number(statusBarHeight || 0) + 5;
 

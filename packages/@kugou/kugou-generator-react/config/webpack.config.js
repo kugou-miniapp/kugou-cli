@@ -646,11 +646,8 @@ module.exports = function(webpackEnv) {
           r: [
             {
               name: "index",
-              content: "all"
             }
           ],
-          t: 'dist',
-          d: 'dist'
         })
     ].filter(Boolean),
     // Some libraries import Node modules but don't use them in the browser.

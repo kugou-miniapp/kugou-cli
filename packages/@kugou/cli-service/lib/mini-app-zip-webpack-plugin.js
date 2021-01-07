@@ -2,6 +2,8 @@ const path = require ('path');
 const fs = require ('fs');
 const archiver = require('archiver');
 const os = require('os');
+const is = require('@sindresorhus/is');
+
 const fsReaddir = async (lp) => {
   return new Promise((resolve, reject) => {
     fs.readdir(lp, function (err, files) {
@@ -31,7 +33,7 @@ const finderGetter = async (localPath) => {
     for (let i = 0; i < files.length; i++) {
       let p = path.join(lp, files[i]);
       let stats = await fsStat(p);
-      if (stats.isFile ()) {
+      if (stats.isFile()) {
         fileHandler.push(p);
         continue
       }
@@ -49,20 +51,21 @@ const finderGetter = async (localPath) => {
  * @param resultPath 输出路径
  * @returns {Promise<void>}
  */
-async function zipMiniApp (rule, targetPath, resultPath) {
+async function zipMiniApp (rule, targetPath, resultPath, exclude) {
   let version = os.platform();
   let isWindow = new RegExp("win","ig").test(version);
 
   var archive = archiver('zip', {
     zlib: { level: 9 } // Sets the compression level.
   });
-  var output = fs.createWriteStream(path.join(resultPath + `/${rule.name || "result"}.zip`));
+  var output = fs.createWriteStream(path.join(resultPath + `/${rule.name || "dist"}.zip`));
   archive.pipe(output);
   const toAddPath = [];
   const { fileHandler } = await finderGetter(targetPath);
   fileHandler.map(v => {
-    // all 等于把所有都直接压缩 不用一个个写
-    if(rule.content === "all") {
+    if (exclude.test(v)) return
+
+    if(!Reflect.has(rule, 'content') || !Array.isArray(rule.content)) {
       let path = v.split(targetPath);
       let name = path[1];
       toAddPath.push({
@@ -103,11 +106,14 @@ async function zipMiniApp (rule, targetPath, resultPath) {
  * @param config 压缩配置
  */
 async function toZip (config) {
-  const { r, t = "dist", d = "dist" } = config;
+  const { r, t = "dist", d = "dist", exclude } = config;
   const rules = r || [];
+
+  const REG_EXCLUDE = is.regExp(exclude) ? exclude : /\.map$/
+
   for (let i = 0; i < rules.length; i++) {
     setTimeout(() => {
-      zipMiniApp(rules[i], path.resolve(t), path.resolve(d))
+      zipMiniApp(rules[i], path.resolve(t), path.resolve(d), REG_EXCLUDE)
     }, i * 1000);
   }
 }

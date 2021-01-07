@@ -9,7 +9,7 @@ function getEntries(baseDir = '') {
     const extname = path.extname(fullPath);
     const basename = path.basename(file, extname);
 
-    if (/\.jsx?/.test(extname)) {
+    if (/\.(t|j)sx?/.test(extname)) {
       entries[basename] = fullPath
     }
   });

@@ -20,6 +20,7 @@
     "url": "git+https://github.com/kugou-miniapp/kugou-cli.git"
   },
   "dependencies": {
+    "@sindresorhus/is": "^4.0.0",
     "archiver": "^4.0.1"
   },
   "bugs": {

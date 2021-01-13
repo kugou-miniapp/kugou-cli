@@ -136,7 +136,7 @@ exports.handler = async function (argv) {
   }
 
   // 5.1 同步generaotr所有文件
-  const files = globby.sync(['**', '!dist', '!node_modules', '!yarn.lock', '!package-lock.json', '!README.md', '.env', '.browserslistrc'], { cwd: generatorPath })
+  const files = globby.sync(['**', '!dist', '!node_modules', '!yarn.lock', '!package-lock.json', '!README.md', '.env', '.browserslistrc', '.gitignore'], { cwd: generatorPath })
 
   const templatePath = input => path.join(generatorPath, input)
   const destinationPath = output => path.join(projectPath, output)

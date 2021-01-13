@@ -1,6 +1,6 @@
 {
   "name": "@kugou-miniapp/kugou-generator-svelte",
-  "version": "0.2.0",
+  "version": "0.2.2",
   "description": "kugou-miniapp generator for svelte",
   "author": "梁嘉辉 <chrisliang@kugou.net>",
   "homepage": ".",

@@ -1,6 +1,6 @@
 {
   "name": "@kugou-miniapp/kugou-generator-react",
-  "version": "0.2.0",
+  "version": "0.2.3",
   "description": "kugou-miniapp generator for react",
   "author": "梁嘉辉 <chrisliang@kugou.net>",
   "homepage": ".",

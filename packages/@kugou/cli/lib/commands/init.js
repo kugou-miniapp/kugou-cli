@@ -165,6 +165,34 @@ exports.handler = async function (argv) {
   appJSON.appkey = argv.appkey || ''
   memFs.writeJSON(appJSONPath, appJSON)
 
+  // 5.5 生成gitignore
+  const gitignorePath = destinationPath('.gitignore')
+  memFs.write(gitignorePath, `# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# dependencies
+/node_modules
+/.pnp
+.pnp.js
+
+# testing
+/coverage
+
+# production
+/dist
+
+# misc
+.DS_Store
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.render
+  `)
+
   memFs.commit(async err => {
     if (err) return console.log(err)
 

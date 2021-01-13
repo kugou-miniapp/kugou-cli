@@ -1,0 +1,13 @@
+{
+  "appid": "",
+  "appkey": "",
+  "window": {
+    "navigationBarBackgroundColor": "#000000",
+    "navigationBarTextStyle": "white",
+    "statusBarTextStyle": "white",
+    "navigationStyle": "custom",
+    "disableScroll": false,
+    "disableSwipeBack": true
+  },
+  "pages": []
+}

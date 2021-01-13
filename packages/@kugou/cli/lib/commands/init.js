@@ -31,6 +31,7 @@ exports.handler = async function (argv) {
   let paths = []
   let modules = []
   let generator;
+  const pm = new PackageManager()
 
   // 1. 询问采用的generator
   if (argv.generator) {
@@ -46,6 +47,9 @@ exports.handler = async function (argv) {
       }, {
         name: 'vue',
         value: 'vue'
+      }, {
+        name: 'svelte',
+        value: 'svelte'
       }]
     }])
 
@@ -59,11 +63,11 @@ exports.handler = async function (argv) {
   if (hasYarn()) {
     const { stdout: yarnGlobalDir } = await execa('yarn', ['global', 'dir'])
     paths.push(path.resolve(yarnGlobalDir, 'node_modules'))
+  } else {
+    const { stdout: npmGlobalDir } = await execa('npm', ['root', '-g'])
+
+    paths.push(path.resolve(npmGlobalDir))
   }
-
-  const { stdout: npmGlobalDir } = await execa('npm', ['root', '-g'])
-
-  paths.push(path.resolve(npmGlobalDir))
 
   paths = _.uniq(paths)
 
@@ -78,16 +82,17 @@ exports.handler = async function (argv) {
 
       // 部分目录可能对当前用户不可读，故需要捕获错误，见yeoman-environment resolver.js
       try {
-        modules = modules.concat(globby.sync(generatorBaseName + '*', {
-          cwd: root,
-          onlyDirectories: true,
-          absolute: true,
-          baseNameMatch: true,
-          deep: 0
-        }))
+        // modules = modules.concat(globby.sync(generatorBaseName + '*', {
+        //   cwd: root,
+        //   onlyDirectories: true,
+        //   absolute: true,
+        //   baseNameMatch: true,
+        //   deep: 0
+        // }))
 
+        // 只下载官方模板
         const scopes = globby.sync(
-          ['@*'],
+          [`${OFFICIAL_SCOPE}*`],
           {cwd: root, onlyDirectories: true, absolute: true, deep: 0}
         );
 
@@ -112,12 +117,10 @@ exports.handler = async function (argv) {
   }
 
   // modules = findModules()
-  modules = []
 
   // 4. 没有安装对应的官方模板，需要先安装
   if (modules.length === 0) {
     info(`现在下载模板 (${chalk.yellow(generatorName)})...`)
-    const pm = new PackageManager()
     await pm.add([generatorName, '--registry', 'https://registry.npm.taobao.org'], { global: true })
     clearConsole()
     done('下载模板成功')
@@ -126,8 +129,7 @@ exports.handler = async function (argv) {
   modules = findModules()
 
   // 5. 创建项目目录，复制对应的generator并调整
-  // TODO: 模板的初始化交给模板自己决定，参考yeoman
-  const generatorPath = modules[0]
+  const generatorPath = modules.filter(_ => _.includes(generatorBaseName))[0]
   const projectPath = path.resolve(projectName)
   if (!fs.existsSync(projectPath)) {
     fs.mkdirSync(projectPath)

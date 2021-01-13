@@ -1,0 +1,38 @@
+@mixin font-dpr($px) {
+  font-size: $px / 2;
+  [data-dpr="2"] & {
+    font-size: $px;
+  }
+  [data-dpr="3"] & {
+    font-size: $px / 2 * 3;
+  }
+}
+
+@mixin rect($px) {
+  width: $px;
+  height: $px;
+}
+
+@mixin round($px) {
+  @include rect($px);
+  border-radius: 50%;
+}
+
+@mixin button {
+  transition: opacity 0.2s;
+  &:active {
+    opacity: 0.6;
+  }
+}
+
+@mixin icon($url, $a) {
+  @include rect($a);
+  display: inline-block;
+  background-image: url($url);
+  background-size: 100% 100%;
+}
+
+@mixin icon-button($url, $a) {
+  @include button;
+  @include icon($url, $a);
+}

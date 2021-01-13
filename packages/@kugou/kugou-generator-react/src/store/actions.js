@@ -7,7 +7,7 @@ const requestUser = () => ({
 
 const receiveUser = data => ({
   type: RECEIVE_USER,
-  user: data
+  data
 })
 
 export {

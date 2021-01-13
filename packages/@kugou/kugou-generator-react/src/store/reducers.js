@@ -5,7 +5,7 @@ export const fetchReducer = (state, action) => {
     case REQUEST_USER:
       return { ...state, isFetching: true };
     case RECEIVE_USER:
-      return { ...state, isFetching: false, user: state.user };
+      return { ...state, isFetching: false, user: action.data };
     default:
       return state;
   }

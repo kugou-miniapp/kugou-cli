@@ -62,7 +62,9 @@ exports.handler = async function(argv) {
   memFs.copyTpl(templatePath('page.*'), destinationPath('src/pages'), templateData, templateData, {
     processDestinationPath: str => path.resolve(path.dirname(str), `${name}${path.extname(str)}`)
   })
-  memFs.copy(templatePath('index.html'), destinationPath(`public/${name}.html`))
+  memFs.copyTpl(templatePath('index.html'), destinationPath(`public/${name}.html`), templateData, templateData, {
+    processDestinationPath: str => path.resolve(path.dirname(str), `${name}${path.extname(str)}`)
+  })
 
   const pages = appJSON.pages = appJSON.pages || []
 

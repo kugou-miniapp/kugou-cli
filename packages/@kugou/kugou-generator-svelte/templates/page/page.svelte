@@ -1,12 +1,14 @@
-<script>
-  import { Router, Route } from "svelte-routing";
-  import Home from '@/views/home'
-  </script>
+<script lang="ts">
+  import Router from "svelte-spa-router";
+  import Index from '@/views/index/index.svelte'
 
-  <style>
-  @import url(~@/styles/index.scss);
-  </style>
+  const routes = {
+    '/': Index,
+  }
+</script>
 
-  <Router>
-    <Route path="/" component={Home} />
-  </Router>
+<style lang="scss">
+@import url('@/styles/index.scss');
+</style>
+
+<Router routes={routes}></Router>

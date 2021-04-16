@@ -1,15 +1,11 @@
-<script>
-  import { onMount } from 'svelte'
-  import { systemInfo, capsuleHeight } from '@/utils/const'
+<script lang="ts">
+  import { systemInfo, capsuleHeight, isKugouMiniApp } from '@/utils/const'
 
   export let title = '';
   export let showback = true;
   export let onBack;
   export let color = '#fff';
   export let type = 1;
-
-  let height = 0;
-
 
   const handleBack = () => {
     if (onBack) {
@@ -18,24 +14,24 @@
     }
 
     if (type === 1) {
-      history.goBack()
-    } else {
-      window.MiniApp && window.MiniApp.navigateBack({
+      history.back()
+    } else if(isKugouMiniApp) {
+      window.MiniApp.navigateBack({
         delta: 1
       });
     }
-  };
-
-  onMount(() => {
-    height = capsuleHeight
-  });
+  }
 </script>
 
-<header class="navigation-bar" style="height:{height}px;top:{Number(systemInfo.statusBarHeight || 20)}px;">
-  <span class="navigation-bar__icon" class:is-hidden={!showback}>
-    <i class="weui-icon-back-arrow-thin" style="background-color:{color}" on:click={handleBack} />
-  </span>
-  <div>{title}</div>
+<header class="navigation-bar">
+  <div class="navigation-bar__content" style={ `height: ${capsuleHeight / 16}rem;margin-top: ${(systemInfo.toolBarMoreTop || 42) / 16}rem;` }>
+    {#if showback}
+    <span class="navigation-bar__icon">
+      <i class="weui-icon-back-arrow-thin" style="background-color:{color}" on:click={handleBack} />
+    </span>
+    {/if}
+    <div>{title}</div>
+  </div>
 </header>
 
 <style lang="scss">
@@ -46,29 +42,26 @@
   color: white;
   top: 0;
   left: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 7px 0;
-  div {
-    font-size: 36px;
-    padding-left: 20px;
+
+  &__content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 100%;
-    text-align: center;
-    line-height: 1;
-    font-weight: bold;
-  }
-  &__icon {
-    position: absolute;
-    height: 36px;
-    top: 50%;
-    left: 40px;
-    transform: translate(0, -50%);
-    opacity: 1;
-    transition: opacity 500ms ease-in-out;
-    &.is-hidden {
-      opacity: 0;
+    padding: 0 0 0 30px;
+
+    div {
+      font-size: 36px;
+      width: 100%;
+      text-align: left;
     }
+  }
+
+  &__icon {
+    position: relative;
+    height: 36px;
+    margin-top: 4px;
+    margin-right: 20px;
   }
 }
 

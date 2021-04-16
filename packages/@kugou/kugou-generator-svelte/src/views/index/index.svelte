@@ -1,6 +1,6 @@
-<script>
-import NavigationBar from '@/components/navigation-bar'
-import logo from '@/assets/img/logo.png'
+<script lang="ts">
+  import NavigationBar from '@/components/navigation-bar.svelte'
+  import logo from '@/assets/logo.png'
 </script>
 
 <style lang="scss">
@@ -30,7 +30,6 @@ import logo from '@/assets/img/logo.png'
     text-align: center;
   }
 }
-
 </style>
 
 <section class="home">

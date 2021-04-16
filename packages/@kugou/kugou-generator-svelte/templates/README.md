@@ -5,7 +5,7 @@
 
 ## Project setup
 ```
-yarn install
+yarn
 ```
 
 ### Compiles and hot-reloads for development
@@ -16,6 +16,11 @@ yarn serve
 ### Compiles and minifies for production
 ```
 yarn build
+```
+
+### Preview for production
+```
+yarn preview
 ```
 
 ## 备注

@@ -9,6 +9,7 @@ module.exports = {
       },
       stage: 3,
     }),
+    require('tailwindcss'),
     pxtoviewport({
       unitToConvert: 'px',
       viewportWidth: 750,

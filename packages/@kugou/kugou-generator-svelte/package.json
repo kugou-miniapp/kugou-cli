@@ -1,6 +1,20 @@
 {
-  "name": "@kugou/svelte-template",
-  "version": "0.1.0",
+  "name": "@kugou-miniapp/kugou-generator-svelte",
+  "version": "0.2.3",
+  "description": "kugou-miniapp generator for svelte",
+  "author": "梁嘉辉 <chrisliang@kugou.net>",
+  "homepage": ".",
+  "license": "ISC",
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kugou-miniapp/kugou-cli.git"
+  },
+  "bugs": {
+    "url": "https://github.com/kugou-miniapp/kugou-cli/issues"
+  },
   "scripts": {
     "serve": "vite",
     "build": "vite build",

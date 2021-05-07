@@ -1,6 +1,7 @@
 import React from 'react';
 import NavigationBar from '@/components/navigation-bar'
 import './index.scss'
+import '@/utils/svg'
 import logo from '@/assets/img/logo.png'
 
 export default function Home() {

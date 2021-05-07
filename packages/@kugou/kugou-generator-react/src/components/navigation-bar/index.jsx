@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./index.scss";
+import Icon from '@/components/svg'
 
 export default function NavigationBar(props) {
   const { title, showback, backClick } = props;
@@ -28,9 +29,7 @@ export default function NavigationBar(props) {
   return (
     <header className="navigation-bar" style={{ top }}>
       {showback && (
-        <span className="navigation-bar__icon">
-          <i className="weui-icon-back-arrow-thin" onClick={handleBack} />
-        </span>
+        <Icon className="navigation-bar-icon" iconClass="arrow" onClick={handleBack}></Icon>
       )}
       <div>{title}</div>
     </header>

@@ -381,6 +381,14 @@ module.exports = function(webpackEnv) {
         // Disable require.ensure as it's not a standard language feature.
         { parser: { requireEnsure: false } },
 
+        {
+          test: /\.svg$/,
+          loader: "svg-sprite-loader",
+          include: path.join(__dirname, '../src/assets/svg'), //只处理指定svg的文件(所有使用的svg文件放到该文件夹下)
+          options: {
+            symbolId: "icon-[name]" //symbolId和use使用的名称对应      <use xlinkHref={"#icon-" + iconClass} />
+          }
+        },
         // First, run the linter.
         // It's important to do this before Babel processes the JS.
         {
@@ -553,7 +561,7 @@ module.exports = function(webpackEnv) {
               // its runtime that would otherwise be processed through "file" loader.
               // Also exclude `html` and `json` extensions so they get processed
               // by webpacks internal loaders.
-              exclude: [/\.(js|mjs|jsx|ts|tsx)$/, /\.html$/, /\.json$/],
+              exclude: [/\.(js|mjs|jsx|ts|tsx)$/, /\.html$/, /\.json$/ , /\.svg$/],
               options: {
                 name: 'static/media/[name].[hash:8].[ext]',
               },

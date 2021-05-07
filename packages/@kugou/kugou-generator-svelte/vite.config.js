@@ -14,6 +14,8 @@ const entries = Object.keys(getEntries()).reduce((pre, key) => {
   if (pre[key]) return pre
 
   pre[key] = resolve(`public/${key}.html`)
+
+  return pre
 }, {
   index: resolve('index.html')
 })

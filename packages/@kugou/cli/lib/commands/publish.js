@@ -28,8 +28,7 @@ exports.builder = {
 exports.handler = async function (argv) {
   let {
     version,
-    sdkVersion,
-    packagePath,
+    // sdkVersion,
     description
   } = argv
   const params = {}
@@ -79,41 +78,32 @@ exports.handler = async function (argv) {
   // 2. 获取小程序离线包
   const pm = new PackageManager()
 
-  if (packagePath) {
-    if (!fs.existsSync(packagePath)) {
-      error('离线包不存在！')
-      exit()
-    }
+  info('现在构建小程序，请稍后~')
+  await pm.run(['build'])
+  info('构建完成！')
 
-    if (!/\.zip$/.test(packagePath)) {
-      error('离线包格式要求为zip')
-      exit()
-    }
-  } else {
-    info('现在构建小程序，请稍后~')
-    await pm.run(['build'])
-    packagePath = path.resolve('dist/index.zip')
-    info('构建完成！')
-  }
 
-  const file = fs.statSync(packagePath)
 
-  if (file.size > 5 * 1024 * 1024) {
-    error('离线包过大，要求5m以内')
-    exit()
-  }
 
-  const fileData = fs.readFileSync(packagePath, { encoding: 'base64' })
+
+
+
 
   // 3. 上传小程序离线包，获取包加密信息
   clearConsole()
   logWithSpinner('⚓', '上传离线包中，请稍后~')
 
   try {
+    const files = await fs.readdir(path.resolve('release'))
+    const fileDataArr = files.filter(_ => /\.zip$/.test(_)).map(_ => ({
+      root: _.split('.')[0],
+      data: fs.readFileSync(path.resolve('release', _), { encoding: 'base64' })
+    }))
+
     const result = await uploadPackage({
       mp_appid: appid,
       appkey,
-      data: fileData,
+      data: fileDataArr,
       ...params
     })
 

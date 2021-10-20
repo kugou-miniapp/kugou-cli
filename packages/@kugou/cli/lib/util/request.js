@@ -35,29 +35,43 @@ async function uploadPackage({
   sdk_version_id,
   description
 } = {}) {
-  const uploadParams = {
-    appid,
-    mp_appid,
-    appkey,
-    data
-  };
+  const hashes = {
+    package: '',
+    separate_package_list: []
+  }
 
-  const {
-    info: {
-      package
+  for (let file of data) {
+    const uploadParams = {
+      appid,
+      mp_appid,
+      appkey,
+      data: file.data,
+      is_separated: file.root !== 'index'
+    };
+
+    const {
+      info: {
+        package: pkg
+      }
+    } = await axios({
+      url: "/op_app_package/upload_v2",
+      method: "POST",
+      data: uploadParams
+    });
+
+    if (is_separated) {
+      hashes.separate_package_list.push({ name: file.root, package: pkg })
+    } else {
+      hashes.package = pkg
     }
-  } = await axios({
-    url: "/op_app_package/upload_v2",
-    method: "POST",
-    data: uploadParams
-  });
+  }
 
   const addParams = {
     appid,
     mp_appid,
     appkey,
-    package,
-    description
+    description,
+    ...hashes
   };
 
   if (version) {

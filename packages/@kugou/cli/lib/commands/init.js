@@ -179,6 +179,7 @@ exports.handler = async function (argv) {
 
 # production
 /dist
+/release
 
 # misc
 .DS_Store

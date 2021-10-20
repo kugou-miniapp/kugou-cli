@@ -11,11 +11,15 @@ exports.builder = {
     desc: '存在同名文件时，是否直接覆盖',
     boolean: true,
     default: false
+  },
+  root: {
+    alias: 'r',
+    desc: '子包目录',
   }
 }
 
 exports.handler = async function(argv) {
-  let { name, force } = argv
+  let { name, force, root } = argv
   if (!name) {
     const answers = await inquirer.prompt([
       {
@@ -41,6 +45,7 @@ exports.handler = async function(argv) {
   const appJSON = memFs.readJSON(appJSONPath)
 
   const hasSameFiles = memFs.exists(path.resolve(`public/${name}.html`)) || memFs.exists(path.resolve(`src/entries/${name}.jsx`)) || memFs.exists(path.resolve(`src/pages/${name}.jsx`))
+  const isSubPage = !!root
 
   if (hasSameFiles && !force) {
     error('存在同名文件，终止创建！')
@@ -62,18 +67,37 @@ exports.handler = async function(argv) {
   memFs.copyTpl(templatePath('page.*'), destinationPath('src/pages'), templateData, templateData, {
     processDestinationPath: str => path.resolve(path.dirname(str), `${name}${path.extname(str)}`)
   })
-  memFs.copyTpl(templatePath('index.html'), destinationPath(`public/${name}.html`), templateData, templateData, {
+  memFs.copyTpl(templatePath('index.html'), destinationPath(`public/${isSubPage ? root + '/' : ''}${name}.html`), templateData, templateData, {
     processDestinationPath: str => path.resolve(path.dirname(str), `${name}${path.extname(str)}`)
   })
 
-  const pages = appJSON.pages = appJSON.pages || []
 
-  if (pages.findIndex(_ => _.name === name) < 0) {
-    pages.push({
-      path: `/${name}.html`
-    })
-    memFs.writeJSON(destinationPath('public/app.json'), appJSON)
+  if (!isSubPage) {
+    const pages = appJSON.pages = appJSON.pages || []
+
+    if (pages.findIndex(_ => _.name === name) < 0) {
+      pages.push({
+        path: `/${name}.html`
+      })
+    }
+  } else {
+    const subpackages = appJSON.subpackages || []
+    const index = subpackages.findIndex(_ => _.root === root)
+    if (index < 0) {
+      subpackages.push({
+        root,
+        pages: [
+          name
+        ]
+      })
+    } else if (!subpackages[index].pages.includes(name)) {
+      subpackages[index].pages.push(name)
+    }
+
+    appJSON.subpackages = subpackages
   }
+
+  memFs.writeJSON(destinationPath('public/app.json'), appJSON)
 
   memFs.commit(async err => {
     clearConsole()

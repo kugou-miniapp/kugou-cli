@@ -650,13 +650,7 @@ module.exports = function(webpackEnv) {
           formatter: isEnvProduction ? typescriptFormatter : undefined,
         }),
       isEnvProduction &&
-        new MiniAppZipWebpackPlugin({
-          r: [
-            {
-              name: "index",
-            }
-          ],
-        })
+        new MiniAppZipWebpackPlugin()
     ].filter(Boolean),
     // Some libraries import Node modules but don't use them in the browser.
     // Tell webpack to provide empty mocks for them so importing them works.

@@ -2,19 +2,21 @@ import path from 'path'
 import { defineConfig } from 'vite'
 import svelte from '@svitejs/vite-plugin-svelte'
 import legacy from './plugins/legacy'
-import zip from './plugins/zip'
 import htmlFallback from './plugins/html-fallback'
-import { getEntries } from '@kugou-miniapp/cli-service'
+import { getEntries, MiniAppZipVitePlugin } from '@kugou-miniapp/cli-service'
 
 const sveltePreprocess = require('svelte-preprocess')
 const resolve = relativePath => path.resolve(__dirname, relativePath);
 
-const entries = Object.keys(getEntries()).reduce((pre, key) => {
+const rawEntries = getEntries('')
+const entries = Object.entries(rawEntries).reduce((pre, [key, value]) => {
   // 过滤index
   if (pre[key]) return pre
-
-  pre[key] = resolve(`public/${key}.html`)
-
+  if (value.root === 'index') {
+    pre[key] = resolve(`public/${key}.html`)
+  } else {
+    pre[value.name] = resolve(`public/${value.root}/${key}.html`)
+  }
   return pre
 }, {
   index: resolve('index.html')
@@ -25,7 +27,7 @@ export default defineConfig({
   base: './',
   build: {
     // sourcemap: true,
-    assetsDir: 'static',
+    assetsDir: '',
     target: 'es2015',
     rollupOptions: {
       input: entries
@@ -37,7 +39,7 @@ export default defineConfig({
     }
   },
   plugins: [
-    htmlFallback(),
+    htmlFallback(rawEntries),
     svelte({
       emitCss: true,
       preprocess: sveltePreprocess({
@@ -55,8 +57,6 @@ export default defineConfig({
       ],
       genChunk: false
     }),
-    zip({
-      file: 'dist.zip'
-    }),
+    MiniAppZipVitePlugin(),
   ]
 })

@@ -1,5 +1,10 @@
 const { MiniAppZipWebpackPlugin, getEntries } = require('@kugou-miniapp/cli-service')
-const { prepareUrls } = require('@kugou-miniapp/cli-shared-utils')
+
+const rawEntries = getEntries('')
+const entries = Object.entries(rawEntries).reduce((pre, [key, value]) => {
+  pre[value.name] = value.path;
+  return pre;
+}, {});
 
 module.exports = {
   chainWebpack: config => {
@@ -7,37 +12,56 @@ module.exports = {
       .externals({
         'mini-app': 'MiniApp'
       })
+      .output
+        .chunkFilename("[name].js")
+        .filename("[name].js");
+    config.module
+      .rule("images")
+      .use("url-loader")
+      .options({
+        limit: 4096,
+        fallback: {
+          loader: "file-loader",
+          options: {
+            name: "[name].[hash:8].[ext]"
+          }
+        }
+      });
+    config.module
+      .rule("media")
+      .use("url-loader")
+      .options({
+        limit: 4096,
+        fallback: {
+          loader: "file-loader",
+          options: {
+            name: "[name].[hash:8].[ext]"
+          }
+        }
+      });
 
-    if (process.env.VUE_APP_DEVTOOL && process.env.NODE_ENV === 'development') {
-      const urls = prepareUrls('http', '0.0.0.0')
+    for (let key in rawEntries) {
+      const entry = rawEntries[key];
 
-      config
-        .plugin('define')
-        .tap(args => {
-          args[0]['process.env.DEVTOOL_HOST'] = JSON.stringify(urls.lanUrlForConfig)
-          args[0]['process.env.DEVTOOL_PORT'] = JSON.stringify(8098)
+      if (entry.root === "index") continue;
 
-          return args
-        })
+      config.plugin(`html-${entry.name}`).tap(args => {
+        args[0].base = "..";
+        return args;
+      });
     }
 
-    if (process.env.NODE_ENV === 'production') {
-      config
-      .plugin('mini-app-zip')
-      .use(MiniAppZipWebpackPlugin, [
-        {
-          r: [
-            {
-              name: "index"
-            }
-          ]
-        }
-      ])
+    if (process.env.NODE_ENV === "production") {
+      config.plugin("mini-app-zip").use(MiniAppZipWebpackPlugin, [{}]);
     }
   },
-  pages: getEntries(),
+  pages: entries,
   publicPath: './',
   css: {
+    extract: process.env.NODE_ENV === 'development' ? false : {
+      filename: '[name].[contenthash:8].css',
+      chunkFilename: '[name].[contenthash:8].chunk.css',
+    },
     loaderOptions: {
       sass: {
         prependData: `

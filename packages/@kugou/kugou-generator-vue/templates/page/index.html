@@ -10,13 +10,6 @@
     <meta name="format-detection" content="email=no" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black" />
     <title>酷狗小程序</title>
-    <% if (process.env.VUE_APP_DEVTOOL && process.env.NODE_ENV === 'development') { %>
-      <script>
-        window.__VUE_DEVTOOLS_HOST__ = '<%= process.env.DEVTOOL_HOST %>' // default: localhost
-        window.__VUE_DEVTOOLS_PORT__ = '<%= process.env.DEVTOOL_PORT %>' // default: 8098
-      </script>
-      <script src="http://<%= process.env.DEVTOOL_HOST %>:<%= process.env.DEVTOOL_PORT %>"></script>
-    <% } %>
   </head>
   <body>
     <div id="root"></div>

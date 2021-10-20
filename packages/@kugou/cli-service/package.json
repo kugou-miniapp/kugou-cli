@@ -21,7 +21,7 @@
   },
   "dependencies": {
     "@sindresorhus/is": "^4.0.0",
-    "archiver": "^4.0.1"
+    "adm-zip": "^0.5.9"
   },
   "bugs": {
     "url": "https://github.com/kugou-miniapp/kugou-cli/issues"

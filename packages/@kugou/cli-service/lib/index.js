@@ -1,9 +1,6 @@
-const { MiniAppZipWebpackPlugin } = require('./mini-app-zip-webpack-plugin')
-const {
-  getEntries,
-  getHtmlWebpackPlugin
-} = require('./webpack')
+const { MiniAppZipWebpackPlugin, MiniAppZipVitePlugin } = require('./zip-plugin')
+const { getEntries } = require('./webpack')
 
 exports.MiniAppZipWebpackPlugin = MiniAppZipWebpackPlugin
+exports.MiniAppZipVitePlugin = MiniAppZipVitePlugin
 exports.getEntries = getEntries
-exports.getHtmlWebpackPlugin = getHtmlWebpackPlugin

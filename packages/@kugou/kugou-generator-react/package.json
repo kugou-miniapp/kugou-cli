@@ -1,6 +1,6 @@
 {
   "name": "@kugou-miniapp/kugou-generator-react",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "kugou-miniapp generator for react",
   "author": "梁嘉辉 <chrisliang@kugou.net>",
   "homepage": ".",
@@ -38,7 +38,7 @@
   },
   "dependencies": {
     "@babel/core": "7.9.0",
-    "@kugou-miniapp/cli-service": "^1.0.1",
+    "@kugou-miniapp/cli-service": "^1.0.2",
     "@kugou-miniapp/cli-shared-utils": "^1.0.1",
     "@svgr/webpack": "4.3.3",
     "@typescript-eslint/eslint-plugin": "^2.10.0",

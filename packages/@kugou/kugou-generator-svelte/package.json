@@ -1,6 +1,6 @@
 {
   "name": "@kugou-miniapp/kugou-generator-svelte",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "kugou-miniapp generator for svelte",
   "author": "梁嘉辉 <chrisliang@kugou.net>",
   "homepage": ".",
@@ -21,7 +21,7 @@
     "preview": "vite preview"
   },
   "devDependencies": {
-    "@kugou-miniapp/cli-service": "^1.0.1",
+    "@kugou-miniapp/cli-service": "^1.0.2",
     "@kugou-miniapp/cli-shared-utils": "^1.0.1",
     "@svitejs/vite-plugin-svelte": "^0.11.1",
     "@vitejs/plugin-legacy": "^1.3.2",

@@ -59,11 +59,15 @@ async function uploadPackage({
       data: uploadParams
     });
 
-    if (is_separated) {
+    if (uploadParams.is_separated) {
       hashes.separate_package_list.push({ name: file.root, package: pkg })
     } else {
       hashes.package = pkg
     }
+  }
+
+  if (hashes.separate_package_list.length === 0) {
+    delete hashes.separate_package_list
   }
 
   const addParams = {

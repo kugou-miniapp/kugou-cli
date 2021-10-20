@@ -1,4 +1,5 @@
 const fs = require('fs')
+const fsPromise = fs.promises
 const path = require('path')
 const { info, done, exit, error, clearConsole, logWithSpinner, stopSpinner } = require('@kugou-miniapp/cli-shared-utils')
 const PackageManager = require('../util/package-manager')
@@ -82,19 +83,12 @@ exports.handler = async function (argv) {
   await pm.run(['build'])
   info('构建完成！')
 
-
-
-
-
-
-
-
   // 3. 上传小程序离线包，获取包加密信息
   clearConsole()
   logWithSpinner('⚓', '上传离线包中，请稍后~')
 
   try {
-    const files = await fs.readdir(path.resolve('release'))
+    const files = await fsPromise.readdir(path.resolve('release'))
     const fileDataArr = files.filter(_ => /\.zip$/.test(_)).map(_ => ({
       root: _.split('.')[0],
       data: fs.readFileSync(path.resolve('release', _), { encoding: 'base64' })
@@ -109,12 +103,6 @@ exports.handler = async function (argv) {
 
     stopSpinner()
     done(`离线包上传成功，请到开放平台(http://open.kugou.com/${appid}/manage/version?path=program)提交审核！`)
-
-    track({
-      a: 22744,
-      ft: 'cli工具发布',
-      svar1: appid
-    })
 
     // 5. 显示预览二维码
     preview({ version: result.version })

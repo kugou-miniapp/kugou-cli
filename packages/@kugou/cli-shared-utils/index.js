@@ -12,9 +12,7 @@
   'service',
   'launch',
   'request',
-  'spinner',
-  // 'track'
-  // 'validate'
+  'spinner'
 ].forEach(m => {
   Object.assign(exports, require(`./lib/${m}`))
 })

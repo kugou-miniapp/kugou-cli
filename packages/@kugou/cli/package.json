@@ -1,6 +1,6 @@
 {
   "name": "@kugou-miniapp/cli",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "cli for kugou-miniapp project",
   "keywords": [
     "cli"

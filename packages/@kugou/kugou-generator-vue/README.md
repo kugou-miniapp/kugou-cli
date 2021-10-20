@@ -18,26 +18,6 @@ yarn serve
 yarn build
 ```
 
-### 开发者工具
-
-利用开发者工具的远程调试功能，可以加速调试设备中的页面，下面简单介绍如何启用开发者工具
-
-- 首先，若没有全局安装```@vue/devtools```需要先安装
-
-```bash
-npm i -g @vue/devtools
-# or
-yarn global add @vue/devtools
-```
-
-- 其次，在```.env```配置环境变量VUE_APP_DEVTOOL=true
-
-- 最后，在终端执行```vue-devtools```命令启动开发者工具
-
-```bash
-vue-devtools
-```
-
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
 

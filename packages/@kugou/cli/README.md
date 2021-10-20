@@ -87,9 +87,3 @@ kugou -h
 ```bash
 kugou --version
 ```
-
-## 三、模板
-
-模板项目需要发布到npm(参考yeoman)，初始化时会自动全局安装所选模板
-
-模板项目命名规则：kugou-generator-*，支持任意scope前缀（如官方的两个模板@kugou-miniapp/kugou-generator-react、@kugou-miniapp/kugou-genenrator-vue）

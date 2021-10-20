@@ -5,12 +5,6 @@ module.exports = {
   darkMode: false, // or 'media' or 'class'
   theme: {
     extend: {
-      backgroundOpacity: {
-        '15': '0.15'
-      },
-      colors: {
-        gray: colors.trueGray
-      },
       padding: {
         full: '100%'
       },

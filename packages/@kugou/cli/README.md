@@ -57,8 +57,8 @@ kugou publish [version]
 ```
 选项：
   -h, --help                 显示帮助信息                                 [布尔]
-  --path, -p                 离线包地址，不填自动当前项目的build命令并上传
   --description, --desc, -d  离线包简介，10-32个字符                      [必需]
+  --root, -r  子包目录                                                  [字符串]
 ```
 
 备注：

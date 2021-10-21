@@ -40,8 +40,7 @@ class MiniAppZipWebpackPlugin{
       done(`${p.name === 'index' ? '主包' : '分包'}${p.name}：${humanFileSize(p.size)}`)
     })
 
-    done("构建完成 ✅");
-    info("请前往酷狗小程序开放平台 https://open.kugou.com/control/basic 手动上传包体");
+    done("构建完成 ✅，在release目录下可查看压缩包！");
   }
 
   generateZip(key) {

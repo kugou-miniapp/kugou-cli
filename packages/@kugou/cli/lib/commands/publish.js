@@ -11,10 +11,10 @@ const track = require('../util/track')
 exports.command = 'publish [version]'
 exports.desc = '发布小程序离线包；version格式x.y.z，默认取最新的版本最后加1'
 exports.builder = {
-  path: {
-    alias: 'p',
-    desc: '离线包地址，不填自动当前项目的build命令并上传'
-  },
+  // path: {
+  //   alias: 'p',
+  //   desc: '离线包地址，不填自动当前项目的build命令并上传'
+  // },
   // sdkVersion: {
   //   alias: 's',
   //   desc: '小程序jssdk的版本，格式x.y.z，默认取最新的版本'
@@ -81,7 +81,6 @@ exports.handler = async function (argv) {
 
   info('现在构建小程序，请稍后~')
   await pm.run(['build'])
-  info('构建完成！')
 
   // 3. 上传小程序离线包，获取包加密信息
   clearConsole()

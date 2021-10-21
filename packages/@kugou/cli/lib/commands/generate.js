@@ -15,6 +15,7 @@ exports.builder = {
   root: {
     alias: 'r',
     desc: '子包目录',
+    type: 'string'
   }
 }
 
